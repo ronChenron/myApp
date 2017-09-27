@@ -57,7 +57,7 @@ return [
             'aliyun' => [
                 'access_key_id' => env('ALIYUN_SMS_AK', ''),
                 'access_key_secret' => env('ALIYUN_SMS_AS', ''),
-                'sign_name' => env('ALIYUN_SMS_SIGN_NAME', ''),
+                'sign_name' => "一简租",
             ]
         ],
     ]
