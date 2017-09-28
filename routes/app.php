@@ -54,5 +54,6 @@ Route::group(['middleware'=> ['auth:app']], function() {
         //获取登陆用户对象信息
         return Auth::guard('app')->user();
     });
-
 });
+
+Route::get('/socialite/token', 'AuthController@socialiteToken');

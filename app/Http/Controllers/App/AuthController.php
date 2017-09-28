@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
+use App\Models\Oauth;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Passport\Token;
 
 class AuthController extends Controller
 {
@@ -91,5 +94,19 @@ class AuthController extends Controller
         );
         $response = Route::dispatch($proxy);
         return $response;
+    }
+
+    public function socialiteToken(Request $request)
+    {
+        $credentials = $request->only('oauth_type', 'oauth_id', 'oauth_access_token', 'oauth_expires');
+        $oauth = Oauth::where([
+            ['oauth_type', '=', $credentials['oauth_type']],
+            ['oauth_id', '=', $credentials['oauth_id']]
+        ])->first();
+        if($oauth) {
+            return $oauth->user->createToken($oauth->oauth_type.'_'.$oauth->oauth_id);
+        }else {
+
+        }
     }
 }

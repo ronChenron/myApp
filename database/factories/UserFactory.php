@@ -25,11 +25,13 @@ function getRandomPhone() {
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
     static $password;
-
+    $time = date('Y-m-d H:i:s');
     return [
         'name' => $faker->name,
         'phone' => getRandomPhone(),
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'created_at' => $time,
+        'updated_at' => $time
     ];
 });

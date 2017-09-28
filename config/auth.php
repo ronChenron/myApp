@@ -48,8 +48,8 @@ return [
         'app' => [
             'driver' => 'passport',
             'provider' => 'users',
-            'client_id' => 3,
-            'client_secret' => 'd5alPc19dprAnfVisNpOm3GqOef5fhvypmSSaw4g',
+            'client_id' => 2,
+            'client_secret' => 'pQZPJvBdPRLwCcQRnOLi9e3CWpA9QXiIP1b6F2HJ',
             'username' => 'phone'
         ]
     ],

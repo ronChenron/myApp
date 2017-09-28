@@ -31,4 +31,14 @@ class User extends Authenticatable
     public function findForPassport($username) {
         return $this->where('phone', $username)->first();
     }
+
+    /**
+     * 第三方登录信息（微信/微博/QQ等）
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function oauths()
+    {
+        return $this->hasMany(Oauth::class);
+    }
 }
