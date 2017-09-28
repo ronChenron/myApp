@@ -24,17 +24,11 @@ Route::post('/request/token/{guard?}', 'AuthController@getToken');
 
 Route::post('/refresh/token/{guard?}', 'AuthController@refreshToken');
 
+/**
+ * 发送短信验证码
+ */
 Route::post('/send/sms', function (Request $request) {
-    dd(config('services.sms'));
-    $sms = new Overtrue\EasySms\EasySms(config('services.sms'));
-    $code = (string)rand(100000, 999999);
-    $mobile = $request->get('phone');
-    \Illuminate\Support\Facades\Cache::put($mobile, $code, 2);      //验证码缓存2分钟
-    return $sms->send($mobile, [
-        'content' => "您的短信验证码是{$code}，有效期是1分钟，请勿泄露。",
-        'template' => 'SMS_50365020',
-        'data' => compact('code')
-    ]);
+    return (new \App\Addon\AliyunSms\UserSms())->sendVerifyCode($request->get('phone'));
 });
 
 /**

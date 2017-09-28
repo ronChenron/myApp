@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "03c4e5c5fc0e60a74b16b6867b368504",
+    "content-hash": "8a506619bc0b65399751b5da571b245b",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -1548,58 +1548,17 @@
             "time": "2017-09-02T17:10:46+00:00"
         },
         {
-            "name": "overtrue/easy-sms",
-            "version": "0.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/overtrue/easy-sms.git",
-                "reference": "7f26c0fb34c037a58f23a1ed7c79f4c21846c684"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/easy-sms/7f26c0fb34c037a58f23a1ed7c79f4c21846c684.zip",
-                "reference": "7f26c0fb34c037a58f23a1ed7c79f4c21846c684",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "mockery/mockery": "1.0.x-dev",
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Overtrue\\EasySms\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "overtrue",
-                    "email": "i@overtrue.me"
-                }
-            ],
-            "description": "The easiest way to send short message.",
-            "time": "2017-07-11T08:08:01+00:00"
-        },
-        {
             "name": "paragonie/random_compat",
-            "version": "v2.0.10",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/paragonie/random_compat/634bae8e911eefa89c1abfbf1b66da679ac8f54d.zip",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+                "url": "https://files.phpcomposer.com/files/paragonie/random_compat/5da4d3c796c275c55f057af5a643ae297d96b4d8.zip",
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8",
                 "shasum": ""
             },
             "require": {
@@ -1634,7 +1593,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13T16:27:32+00:00"
+            "time": "2017-09-27T21:40:39+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -3085,6 +3044,46 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "xutl/aliyunmns",
+            "version": "1.3.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xutl/AliyunMNS.git",
+                "reference": "d6c1dc0f43833e1c6995e1d7d5ab23b21b4e1bc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/xutl/AliyunMNS/d6c1dc0f43833e1c6995e1d7d5ab23b21b4e1bc8.zip",
+                "reference": "d6c1dc0f43833e1c6995e1d7d5ab23b21b4e1bc8",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AliyunMNS\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "authors": [
+                {
+                    "name": "aliyun",
+                    "email": "aliyun@aliyun.com"
+                }
+            ],
+            "description": "aliyunmsn php sdk",
+            "keywords": [
+                "aliyun",
+                "mns"
+            ],
+            "time": "2017-08-21T06:21:59+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

@@ -12,8 +12,8 @@
         "laravel/framework": "5.5.*",
         "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
-        "overtrue/easy-sms": "^0.0.9",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "xutl/aliyunmns": "1.3.5.3"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
