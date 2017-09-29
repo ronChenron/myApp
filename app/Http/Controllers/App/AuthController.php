@@ -125,7 +125,7 @@ class AuthController extends AppController
             ['oauth_type', '=', $credentials['oauth_type']],
             ['oauth_id', '=', $credentials['oauth_id']]
         ])->first();
-        if($oauth) {
+        if($oauth&&$oauth->user) {
             $oauth->oauth_info = $credentials['oauth_info'];
             $oauth->save();
             return $oauth->user->createToken($oauth->oauth_type.'_'.$oauth->oauth_id);
@@ -136,6 +136,10 @@ class AuthController extends AppController
 
     /**
      * 绑定手机号
+     * {
+     *      'phone':'18611394471',
+     *      'verify_phone':'12456'
+     * }
      *
      * @param Request $request
      */
@@ -150,6 +154,7 @@ class AuthController extends AppController
         $phone = $request->get('phone');
         $user = User::where('phone', $phone)->first();
         if(!$user) {
+            //不存在的用户则创建
             $user = User::create(compact('phone'));
         }
         $credentials = $request->only('oauth_type', 'oauth_id', 'oauth_info');

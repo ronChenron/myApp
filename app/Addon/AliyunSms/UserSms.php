@@ -23,7 +23,7 @@ class UserSms extends SendSms
     {
         $code = (string)rand(100000, 999999);
         Cache::put($mobile, $code, 5);      //验证码缓存1分钟
-        return $this->sendTo($mobile, 'SMS_63455007', '麦田筑家网', compact('code'));
+        return $this->sendTo($mobile, 'SMS_63455007', '夜行侠', compact('code'));
     }
 
     /**
