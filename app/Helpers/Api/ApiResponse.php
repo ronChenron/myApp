@@ -6,7 +6,7 @@
  * Time: 17:41
  */
 
-namespace App\Http\Controllers\Traits;
+namespace App\Helpers\Api;
 
 use Symfony\Component\HttpFoundation\Response as Foundationresponse;
 use Illuminate\Support\Facades\Response;

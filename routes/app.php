@@ -56,4 +56,6 @@ Route::group(['middleware'=> ['auth:app']], function() {
     });
 });
 
-Route::get('/socialite/token', 'AuthController@socialiteToken');
+Route::post('/socialite/token', 'AuthController@socialiteToken');
+
+Route::post('/bind/phone', 'AuthController@bindPhone');

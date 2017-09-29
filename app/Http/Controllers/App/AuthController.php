@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\App;
 
-use App\Http\Controllers\Controller;
 use App\Models\Oauth;
 use App\Models\User;
+use App\Rules\Phone;
+use App\Rules\VerifyPhone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Laravel\Passport\Token;
 
-class AuthController extends Controller
+class AuthController extends AppController
 {
 
     /**
@@ -96,17 +96,64 @@ class AuthController extends Controller
         return $response;
     }
 
+    /**
+     * 第三方授权登陆
+     *
+     * @request
+     *  {
+     *      'oauth_type':'qq',  //第三方类型 qq/wechat/weibo
+     *      'oauth_id':'dshakjfdknflkhasd14',     //第三方标识openid/uid
+     *      'oauth_info':用户信息   //json
+     *  }
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function socialiteToken(Request $request)
     {
-        $credentials = $request->only('oauth_type', 'oauth_id', 'oauth_access_token', 'oauth_expires');
+        $credentials = $request->only('oauth_type', 'oauth_id', 'oauth_info');
+        $result = $this->personalToken($credentials);
+        if($result) {
+            return $result;
+        }else {
+            return $this->notFond("请先绑定手机号");
+        }
+    }
+
+    protected function personalToken($credentials) {
         $oauth = Oauth::where([
             ['oauth_type', '=', $credentials['oauth_type']],
             ['oauth_id', '=', $credentials['oauth_id']]
         ])->first();
         if($oauth) {
+            $oauth->oauth_info = $credentials['oauth_info'];
+            $oauth->save();
             return $oauth->user->createToken($oauth->oauth_type.'_'.$oauth->oauth_id);
         }else {
-
+            return false;
         }
+    }
+
+    /**
+     * 绑定手机号
+     *
+     * @param Request $request
+     */
+    public function bindPhone(Request $request)
+    {
+        //手机号及验证码验证
+        $request->validate([
+            'phone' => ['required', new Phone()],
+            'verify_phone' => ['required', new VerifyPhone()]
+        ]);
+
+        $phone = $request->get('phone');
+        $user = User::where('phone', $phone)->first();
+        if(!$user) {
+            $user = User::create(compact('phone'));
+        }
+        $credentials = $request->only('oauth_type', 'oauth_id', 'oauth_info');
+        $user->oauths()->create($credentials);
+        return $user->createToken($credentials['oauth_type'].'_'.$credentials['oauth_id']);
     }
 }

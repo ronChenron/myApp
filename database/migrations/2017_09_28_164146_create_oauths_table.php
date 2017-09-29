@@ -18,8 +18,7 @@ class CreateOauthsTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->string('oauth_type');
             $table->string('oauth_id');
-            $table->string('oauth_access_token');
-            $table->unsignedInteger('oauth_expires');
+            $table->json('oauth_info');
             $table->timestamps();
         });
     }
