@@ -28,7 +28,7 @@ Route::post('/refresh/token/{guard?}', 'AuthController@refreshToken');
  * 发送短信验证码
  */
 Route::post('/send/sms', function (Request $request) {
-    return (new \App\Addon\AliyunSms\UserSms())->sendVerifyCode($request->get('phone'));
+    return (new \App\Addon\AliyunMns\UserSms())->sendVerifyCode($request->get('phone'));
 });
 
 /**

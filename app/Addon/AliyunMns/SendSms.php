@@ -1,5 +1,6 @@
 <?php
-namespace App\Addon\AliyunSms;
+namespace App\Addon\AliyunMns;
+
 
 use AliyunMNS\Client;
 use AliyunMNS\Exception\MnsException;
@@ -11,17 +12,22 @@ class SendSms
 {
     public function sendTo($mobile, $template, $sign_name, array $data)
     {
-        $endPoint = "http://1569989557773627.mns.cn-hangzhou.aliyuncs.com/";
-        $topic = "sms.topic-cn-hangzhou";
-        $client =new Client($endPoint, config('services.aliyunsms.key'), config('services.aliyunsms.secret'));
-        $topic = $client->getTopicRef($topic);
+        $client =new Client(config('services.aliyun_mns.endPoint'), config('services.aliyun_mns.key'), config('services.aliyun_mns.secret'));
+        $topic = $client->getTopicRef(config('services.aliyun_mns.topic'));
         $batchSmsAttributes = new BatchSmsAttributes($sign_name, $template);
         $batchSmsAttributes->addReceiver($mobile, $data);
         $messageAttributes = new MessageAttributes(array($batchSmsAttributes));
         $messageBody = "smsmessage";
         $request = new PublishMessageRequest($messageBody, $messageAttributes);
         try {
-            return $topic->publishMessage($request);
+            $result = $topic->publishMessage($request);
+            if($result->isSucceed()) {
+                return [
+                    'message' => '短信发送成功'
+                ];
+            }else {
+                return response('短信发送失败', 401);
+            }
         } catch (MnsException $e) {
             throw $e;
         }

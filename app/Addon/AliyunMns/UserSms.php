@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Addon\AliyunSms;
+namespace App\Addon\AliyunMns;
 
-use App\Models\Order;
-use Auth;
 use Illuminate\Support\Facades\Cache;
 
 /**
@@ -22,7 +20,7 @@ class UserSms extends SendSms
     public function sendVerifyCode($mobile)
     {
         $code = (string)rand(100000, 999999);
-        Cache::put($mobile, $code, 5);      //验证码缓存1分钟
+        Cache::put($mobile, $code, 1);      //验证码缓存1分钟
         return $this->sendTo($mobile, 'SMS_63455007', '夜行侠', compact('code'));
     }
 
@@ -39,16 +37,5 @@ class UserSms extends SendSms
         }else {
             return false;
         }
-    }
-
-    /**
-     * 用户下单成功发送短信通知
-     *
-     * @param Order $order
-     * @return bool|mixed|\SimpleXMLElement
-     */
-    public function sendOrderNotice(Order $order)
-    {
-        return $this->sendTo($order->user->phone, 'SMS_60365331', '一简租', ['out_trade_no' => $order->out_trade_no]);
     }
 }

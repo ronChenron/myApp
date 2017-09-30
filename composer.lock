@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8e3f59349974cd9da182d94f23ed297",
+    "content-hash": "aa7c71804f01e58305f3e8f22725e05d",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -797,6 +797,44 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jinchun/aliyun-mns",
+            "version": "v1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jinchun/aliyun-mns.git",
+                "reference": "2d3a1e98b0fe95b0543c4ccab59066d0518f0795"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/jinchun/aliyun-mns/2d3a1e98b0fe95b0543c4ccab59066d0518f0795.zip",
+                "reference": "2d3a1e98b0fe95b0543c4ccab59066d0518f0795",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.12",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AliyunMNS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "jinchun",
+                    "email": "imjinchun@gmail.com"
+                }
+            ],
+            "description": "阿里云官方 MNS，composer 方式维护",
+            "time": "2017-05-12T09:06:24+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3044,46 +3082,6 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
-        },
-        {
-            "name": "xutl/aliyunmns",
-            "version": "1.3.5.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/xutl/AliyunMNS.git",
-                "reference": "d6c1dc0f43833e1c6995e1d7d5ab23b21b4e1bc8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/xutl/AliyunMNS/d6c1dc0f43833e1c6995e1d7d5ab23b21b4e1bc8.zip",
-                "reference": "d6c1dc0f43833e1c6995e1d7d5ab23b21b4e1bc8",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "AliyunMNS\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache"
-            ],
-            "authors": [
-                {
-                    "name": "aliyun",
-                    "email": "aliyun@aliyun.com"
-                }
-            ],
-            "description": "aliyunmsn php sdk",
-            "keywords": [
-                "aliyun",
-                "mns"
-            ],
-            "time": "2017-08-21T06:21:59+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

@@ -34,8 +34,10 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-    'aliyunsms' => [
-        'key' => env('ALIYUN_SMS_AK'),
-        'secret' => env('ALIYUN_SMS_AS')
+    'aliyun_mns' => [
+        'endPoint' => env('ALIYUN_MNS_ENDPOINT'),
+        'topic' => env('ALIYUN_MNS_TOPIC'),
+        'key' => env('ALIYUN_MNS_AK'),
+        'secret' => env('ALIYUN_MNS_AS')
     ],
 ];

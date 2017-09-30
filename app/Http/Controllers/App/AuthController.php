@@ -60,6 +60,37 @@ class AuthController extends AppController
     }
 
     /**
+     * 注册用户
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function register(Request $request)
+    {
+        //手机号及验证码验证
+        $request->validate([
+            'phone' => ['required', new Phone()],
+            'verify_phone' => ['required', new VerifyPhone()],
+            'password'=> ['required', 'min:6', 'max:32'],
+            'name' => ['required', 'max:20']
+        ]);
+        if($this->create(['name' => $request->get('name'), 'phone' => $request->get('phone'), 'password' => bcrypt($request->get('password'))])) {
+            return $this->getToken($request);
+        }else {
+            return $this->failed("注册失败");
+        }
+    }
+
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'password' => $data['password']
+        ]);
+    }
+
+    /**
      * 刷新token
      *
      * @request 请求参数
